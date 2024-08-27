@@ -32,7 +32,7 @@ At most times you can see me developing games. Besides that if I get a creative 
 | Task-06   | OpenDocs              | Not attempted      |
 | Task-07   | Pirate's Dilemma      | Partially Complete |
 | Task-08   | Blog Burst            | Completed          |
-| Task-09   | HERO-DEX!             | Mostly Completed   |
+| Task-09   | HERO-DEX!             | Completed          |
 | Task-10   | Operation Pixel Merge | Completed          |
 
 
