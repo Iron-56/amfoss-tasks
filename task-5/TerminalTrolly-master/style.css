@@ -1,0 +1,42 @@
+
+.floating-window {
+	border-radius: 30px;
+	background: white;
+	width: 50%;
+	height: 80%;
+}
+
+.product-price {
+	padding: 5%;
+	border-radius: 10px;
+	box-shadow: 0 0 7px #ccc;
+	font-style: italic;
+}
+
+.final-amount {
+	text-align: center;
+	padding-top: 10px;
+}
+
+.row {
+	--bs-gutter-y: -2%;
+}
+
+.product-list {
+	padding: 10%;
+	width: 100%;
+	max-height: 60%;
+	overflow: hidden;
+}
+
+.window-content {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.list-group-item {
+	border: white;
+}

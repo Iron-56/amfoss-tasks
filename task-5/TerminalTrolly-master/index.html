@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		<title>E-commerce Terminal</title>
+		<link rel="stylesheet" href="styles.css">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	</head>
+	<body style="background-color: rgb(249, 238, 240);">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">
+				<img src="shopify.png" style="width: 30%; height: 30%">
+			</a>
+			<div class="collapse navbar-collapse" style="height: 25px;">
+				<ul class="navbar-nav">
+					<li class="nav-item active"> <a class="nav-link">Home</a></li>
+					<li class="nav-item"> <a class="nav-link">Shop</a> </li>
+					<li class="nav-item"> <a class="nav-link">Contact</a> </li>
+					<li class="nav-item"> <a class="nav-link">About</a> </li>
+				</ul>
+
+				<div class="collapse navbar-collapse" style="height: 25px; margin-left: 25%;">
+					<a class="navbar-brand" style="margin-left: 3%"><img src="search.svg" class="navbar-icon" href="#"></a>
+					<a class="navbar-brand" style="margin-left: 3%"><img src="heart.svg" class="navbar-icon" href="#"></a>
+					<a class="navbar-brand" style="margin-left: 3%""><img src="cart.svg" class="navbar-icon" href="#"></a>
+					<h4 id="total-price" style="margin: 3%;">$0.00</h4>
+				</div>
+				<!--<h3 id="total-price" style="margin: 8%;">$0.00</h3>-->
+			</div>
+		</nav>
+		<div class="container">
+			<div class="product-catalog container">
+				<div class="row"></div>
+			</div>
+			<div class="terminal">
+				<div class="terminal-window">
+					<div class="terminal-output"><p></p></div>
+					<div class="terminal-input">
+						<span class="prompt" style="color:greenyellow">user@ubuntu:~$</span>
+						<input type="text" placeholder="Enter command...">
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
