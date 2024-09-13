@@ -1,5 +1,5 @@
 # Build Cross-platform apps with Flutter
-
+[Medium post](https://medium.com/@nandukrishna/build-cross-platform-apps-with-flutter-740f12cd6f86)
 # Hello!
 I’m Nandu Krishna and I am a junior student of Amrita Vishwa Vidyapeetham. I’m a passionate programmer who’s journey is to become a great and well known developer.
 
