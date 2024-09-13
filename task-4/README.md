@@ -24,3 +24,7 @@ books = subject.get_all_results()
 ```
 
 This block gets the list of books of a subject
+
+## Review
+
+I found this task pretty entertaining as I found out that I can make an app using an API or many APIs free for all. I didn't find this task very difficult as compared to some other tasks.  
