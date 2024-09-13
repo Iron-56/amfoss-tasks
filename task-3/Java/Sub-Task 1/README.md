@@ -1,0 +1,1 @@
+After the main function is called println function writes object to the terminal.

@@ -1,5 +1,3 @@
-//fix the errors and complete the code.
-
 const terminalOutput = document.querySelector('.terminal-output').children[0];
 const terminalInput = document.querySelector('input[type="text"]');
 const productCatalog = document.querySelector('.product-catalog');
@@ -252,4 +250,4 @@ function main()
 	fetchData();
 }
 
-main()
+main();

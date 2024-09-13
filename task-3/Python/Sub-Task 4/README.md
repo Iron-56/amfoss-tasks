@@ -1,0 +1,1 @@
+The write function in Python writes a single line to the file. The counter variable first increases by 2 from 1 to half of number of rows then decreases. Replication of strings is used rather than an extra for loop.

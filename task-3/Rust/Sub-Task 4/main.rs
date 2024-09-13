@@ -16,7 +16,7 @@ fn main() {
     let n = match input_line.trim().parse::<i32>() {
         Ok(num) => num,
         Err(_) => {
-            println!("Invalid input. Please enter an integer.");
+            println!("Invalid input");
             return;
         }
     };

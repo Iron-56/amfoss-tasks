@@ -1,0 +1,1 @@
+Each line of the pattern is added to the seq variable to form the full pattern and is written to the file. The counter variable first increases by 2 from 1 to half of number of rows then decreases. Replication of strings is used rather than an extra for loop.

@@ -1,0 +1,1 @@
+IO puts method in Elixir writes to the terminal.

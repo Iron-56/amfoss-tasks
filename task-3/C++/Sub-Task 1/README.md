@@ -1,0 +1,1 @@
+printf function outputs formatted text to output stream in C/C++.

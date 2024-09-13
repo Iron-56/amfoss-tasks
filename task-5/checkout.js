@@ -1,10 +1,10 @@
 const productList = document.querySelector(".product-list")
 const total = document.getElementById("total-amount")
 cart = []
+cprice = 0;
 
 function main()
 {
-	cprice = 0;
 
 	cart = JSON.parse(sessionStorage.getItem("cart"))
 	cart.forEach(item => {
@@ -15,6 +15,10 @@ function main()
 		price.style = "text-align: center;";
 		title.innerHTML = item.title;
 		price.innerHTML = "$"+item.price.toString();
+		if(item.quantity > 1)
+		{
+			price.innerHTML += "×"+item.quantity.toString();
+		}
 		product.classList.add("row");
 		product.classList.add("product-price");
 		product.classList.add("align-items-center");
@@ -28,7 +32,7 @@ function main()
 		product.appendChild(price);
 		productList.appendChild(product);
 
-		cprice += item.price;
+		cprice += item.price*item.quantity;
 	});
 
 	total.innerHTML = "$"+(Math.round((52.48+cprice)*100)/100).toString();

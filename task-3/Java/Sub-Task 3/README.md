@@ -1,0 +1,1 @@
+The user input is read using System.in and is given to the scanner variable to take int input. The counter variable first increases by 2 from 1 to half of number of rows then decreases. Replication of strings using function repeat is used rather than an extra for loop.

@@ -1,0 +1,1 @@
+Using fopen the file is opened and a character sequence of the required size is alloted to memory and is then written to the output text file using while loop

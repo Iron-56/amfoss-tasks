@@ -1,0 +1,1 @@
+File.open("output.txt", "w") { line opens output.txt in write mode. The file variable is assigned with output.txt file object. File.read("input.txt") returns the file contents.

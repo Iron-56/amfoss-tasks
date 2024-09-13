@@ -1,5 +1,5 @@
 
-n = File.read("input.txt").to_i()
+n = File.read("input.txt").chomp.to_i()
 counter = n%2
 seq = ""
 

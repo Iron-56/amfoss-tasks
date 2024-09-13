@@ -1,0 +1,1 @@
+The input is read using FileReader and is given to BufferedReader and converted to int using parseInt. The counter variable first increases by 2 from 1 to half of number of rows then decreases. Replication of strings using function repeat is used rather than an extra for loop.

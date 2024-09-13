@@ -1,0 +1,1 @@
+putStrLn function writes text to the terminal.

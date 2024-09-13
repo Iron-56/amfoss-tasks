@@ -1,0 +1,1 @@
+Println of fmt package outputs text to terminal. 

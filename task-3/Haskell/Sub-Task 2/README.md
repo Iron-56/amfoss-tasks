@@ -1,0 +1,1 @@
+The openFile returns a file handle object and the content of string datatype is retrieved using hGetContents function. The writeFile method writes string to the corresponding file.

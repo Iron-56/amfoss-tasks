@@ -1,0 +1,1 @@
+The File.read method returns {:ok, data} and File.write accepts data.

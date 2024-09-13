@@ -1,0 +1,1 @@
+The fputc function in C/C++ writes a single character to the file at pointer. . The counter variable first increases by 2 from 1 to half of number of rows then decreases. Replication of strings using function is used rather than an extra for loop.

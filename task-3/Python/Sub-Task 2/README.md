@@ -1,0 +1,1 @@
+The readlines function returns a list of string and writelines accepts a list of string. The Flush function updates the file.

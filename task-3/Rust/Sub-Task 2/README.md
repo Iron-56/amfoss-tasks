@@ -1,0 +1,1 @@
+The fs::copy function copies content of input.txt to output.txt file in Rust.

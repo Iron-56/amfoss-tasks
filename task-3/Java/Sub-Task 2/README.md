@@ -1,0 +1,1 @@
+The input file object is given to the scanner variable and is used in thw while loop to read and check if the next line exists. The write function of FileWriter class enables us to write a single line.

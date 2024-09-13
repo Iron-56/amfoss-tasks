@@ -1,0 +1,1 @@
+The file object is passed to the scanner class and text is read from scanner object. The string is converted to int using atoi of strconv package. The counter variable first increases by 2 from 1 to half of number of rows then decreases. Replication of strings is used rather than an extra for loop. WriteString method writes the entire sequence to the file object.

@@ -1,0 +1,1 @@
+Using Integer parse the input string is assigned to n variable. The rem function acts as modulus operator and the counter variable first increases by 2 from 1 to half of number of rows then decreases. Replication of strings is used rather than an extra for loop. Combined string is written to the terminal using <>

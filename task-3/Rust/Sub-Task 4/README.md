@@ -1,0 +1,1 @@
+First a string input is assigned to a mutable variable using read_to_string and converted to integer. The counter variable first increases by 2 from 1 to half of number of rows then decreases. Replication of strings using repeat function is used rather than an extra for loop. Each line of the pattern is written to the output file. 

@@ -1,6 +1,5 @@
 import telebot
 from telegram.constants import ParseMode
-import math
 from google_books_api_wrapper.api import GoogleBooksAPI
 
 

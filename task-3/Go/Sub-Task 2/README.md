@@ -1,0 +1,1 @@
+The Open function of os package opens a file and copy function of io copies content of input file to ouput file.
