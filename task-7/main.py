@@ -10,48 +10,64 @@ id = imdb.IMDb()
 @click.argument('mp4_path')
 @click.option('--language', '-l', default="English", help='Filter subtitles by language.')
 @click.option('--output', '-o', default=None, help='Specify the output folder for the subtitles.')
-@click.option('--file_size', '-s', default=None, help='Filter subtitles by movie file size.')
+@click.option('--file_size', '-s', is_flag=True, help='Filter subtitles by movie file size.')
 @click.option('--match_by_hash', '-h', is_flag=True, help='Match subtitles by movie hash.')
 @click.option('--batch_download', '-b', is_flag=True, default=False, type=click.BOOL, help='Enable batch mode.')
 
 def search(mp4_path, language, output, file_size, match_by_hash, batch_download):
-	
-	if not os.path.exists(mp4_path):
+
+	o = ""
+
+	if output is not None:
+		o = "/"+output
+		if not os.path.exists(output):
+			os.makedirs(output)
+
+	if batch_download == True:
+		for file in os.listdir(mp4_path):
+			f = os.path.join(mp4_path, file)
+			if os.path.isfile(f):
+				if file.endswith(".mpeg4"):
+					getFile(mp4_path+"/", file, language, file_size, match_by_hash, output)
+	else:
+		getFile("", mp4_path, language, file_size, match_by_hash, output)
+
+
+def getFile(dir, filename, language, file_size, match_by_hash, output):
+	if not os.path.exists(dir+filename):
 		click.echo("No such file exists")
 		return -1
 
-	movies = id.search_movie(mp4_path)
+	hash, size = subs_hash.hash_size_File_url(dir+filename)
+	domain = "https://www.opensubtitles.org/en/search/sublanguageid-all"
 
-	domain = "https://www.opensubtitles.org/en/search2/sublanguageid-all"
+	movies = id.search_movie(filename)
 
-	#if batch_download == True:
-	#	batchPath = input("Enter batch download path: ")
-	#if file_size is not None:
-	#	domain += "/moviebytesize-"+file_size
+	if (language is not None) and (len(movies) == 0):
+		domain += "/movielanguage-"+language
 	
-	#if language is not None:
-	#	domain += "/movielanguage-"+language
-
-	hash, size = subs_hash.hash_size_File_url(mp4_path)
-	print(hash, size)
-
-	if len(movies) == 0:
-		#
-		domain += "/imdbid-0052077"#+movies[0].movieID
-	elif match_by_hash:
+	if file_size:
+		print("Size:", size)
 		domain += "/moviebytesize-"+str(size)
+
+	if len(movies) != 0:
+		domain += "/imdbid-"+movies[0].movieID
+	elif match_by_hash:
+		print("Hash:", hash)
 		domain += "/moviehash-"+hash
-		#print(BeautifulSoup(requests.get(domain).text, 'html.parser').prettify())
-	#print(hash, size)
 	
 
 	domain += "/sort-7/asc-0"
-	print(domain)
+	print("Getting results from:",domain)
 	soup = BeautifulSoup(requests.get(domain).text, 'html.parser')
-	trs = soup.find("table", {"id":"search_results"}).find("tbody").find_all("tr")
 
-	trs = soup.find_all("tr", {"class":"change even expandable"})
-	trs.append(soup.find_all("tr", {"class":"change even odd"}))
+	try:
+		trs = soup.find("table", {"id":"search_results"}).find("tbody").find_all("tr")
+		trs = soup.find_all("tr", {"class":"change even expandable"})
+		trs.append(soup.find_all("tr", {"class":"change even odd"}))
+	except:
+		print("No file with that size found.")
+		return 0
 
 	subtitles = []
 	for tr in trs:
@@ -75,15 +91,10 @@ def search(mp4_path, language, output, file_size, match_by_hash, batch_download)
 	sub = int(click.prompt("Choose a format: ", click.INT))-1
 
 	download_link = "https://www.opensubtitles.org/en/subtitleserve/sub/"+subtitles[sub]["code"]
-
-	zipfile.ZipFile(io.BytesIO(requests.get(download_link).content))
+	print("Downloading:",download_link)
 	
-def download_url(url, save_path, chunk_size=128):
-    r = requests.get(url, stream=True)
-    with open(save_path, 'wb') as fd:
-        for chunk in r.iter_content(chunk_size=chunk_size):
-            fd.write(chunk)
-
+	z = zipfile.ZipFile(io.BytesIO(requests.get(download_link).content))
+	z.extractall(output)
 
 
 search()
