@@ -3,7 +3,7 @@
 ## About Me
 
 Hello!
-My name is Nandu Krishna and I love programming till day 1.
+My name is Nandu Krishna and I loved programming from day 1.
 I know quite a good amount of programming languaage basics like C++, C, Java, Python, Javascript, C#, and some Rust. I once made a Game Engine using C++ & OpenGL. App development is one of the main reason I am joinning am-FOSS. Other than coding and stuff I love playing Chess, Badminton (and some PC games :P)
 
 ## Why should we choose you?
