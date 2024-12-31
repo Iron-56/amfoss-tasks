@@ -283,19 +283,6 @@ class SearchWindow(QWidget):
 			self.display_window.close()
 		self.display_window = PokeDisplay()
 		self.display_window.show()
-		
-	## TO-DO ##
-
-	# 1 #
-	# Fetch the data from from the API.
-	# Display the name, official artwork (image), abilities, types and stats when queried with a Pokémon name.
-	# Add the background provided in assets
-
-	# 2 #
-	# Capture the Pokémon i.e. download the image.
-
-	# 3 #
-	# Display all the Pokémon captured with their respective names using a new window.
 
 if __name__ == "__main__":
 	import sys
