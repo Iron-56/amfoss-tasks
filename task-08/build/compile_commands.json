@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/john/Documents/amfoss-tasks/task-08/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/VulkanGLFWExample.dir/main.cpp.o -c /home/john/Documents/amfoss-tasks/task-08/main.cpp",
+  "file": "/home/john/Documents/amfoss-tasks/task-08/main.cpp",
+  "output": "CMakeFiles/VulkanGLFWExample.dir/main.cpp.o"
+}
+]
