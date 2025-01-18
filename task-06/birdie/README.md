@@ -1,16 +1,3 @@
-# birdie
+## Flutter Jumpstart
 
-A bird game.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+I first installed flame and flame_tiled package by adding it to the pubspec.yaml. Then I went to make the control buttons by using SpriteComponent and TapCallbacks. To give it a keyboard input for testing purposes I also added WASD movements using onKeyEvent virtual function overriding. To load the assets, I added the required asset path in the pubspec.yaml file. The first step to make the player was animations and for that I used [Piskel]("ttps://www.piskelapp.com/p/create/sprite) and for importing I used different SpriteAnimation members such as idle, run etc and using the corresponding spritesheet. To display the tilemap, I used TiledComponent and loading the game map which I created using the tiled app from the package manager and downloading a suitable tileset. To detect collisions, I walked through the boundaries of the hitbox of the player and checking if the tile image corresponding to the position it is empty or not. I used a technique for player movements which I had made in Scratch way before. To create the fixed background, I used camera.backdrop.add function. The code seems to be scalable with the tilemap width and height as it only checks the hitbox boundaries and not looping through the entire tiles.

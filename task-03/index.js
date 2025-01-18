@@ -3,7 +3,7 @@ sounds = {}
 
 function add(key, s)
 {
-	sounds[key] = new Audio(`sounds/${s}.mp3`);
+	sounds[key] = `sounds/${s}.mp3`;
 }
 
 function load()
@@ -24,7 +24,8 @@ function addListeners()
 	{
 		buttons.children[i].play = function()
 		{
-			sounds[this.innerHTML].play();
+			let audio = new Audio(sounds[this.innerHTML]);
+			audio.play();
 			this.classList.add("pressed");
 
 			setTimeout(() => {

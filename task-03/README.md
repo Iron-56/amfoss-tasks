@@ -1,9 +1,3 @@
-# Getting started:
+## Beat the Buttons
 
-<ol>
-  <li>Clone this repository into your local machine</li>
-  <li>Open the folder in an editor of your choice (Recommended - VS Code)</li>
-  <li>Download the Live Server extension in VS Code to instantly see your changes made to the website without refreshing the tab</li>
-</ol>
-
-<p>You can begin this task by referring to the READMEs given in the folders named Part-1,2,3,4</p>
+Using the querySelector function I was able to get all the buttons and attach the click event using an event listener. I played the corresponding audio by converting the keydown code to upper case and matching it with the sound paths using a dictionary. To play the same sound over another that may play in background I used new Audio each time the button was clicked/Keydown. I was able to do a button down css effect by dynamically changing the class list by adding a pressed class.

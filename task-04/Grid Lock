@@ -1,0 +1,200 @@
+grid = []
+values = []
+lines = []
+words = []
+intersections = []
+# indent = -1
+import copy
+from collections import Counter
+
+def checkPoint(y, x):
+    return (y,x) in values
+
+def findLine(y, x, d = 2, l = 1):
+    if checkPoint(y-1, x) and (d == 2 or d == 0):
+        return findLine(y-1, x, 0, l+1)
+    if checkPoint(y, x-1) and (d == 2 or d == 1):
+        return findLine(y, x-1, 1, l+1)
+    return [y, x, d, l, [], []]
+
+def findLines():
+    global lines
+    for pos in values:
+        line = findLine(pos[0], pos[1])
+        if line not in lines and line[2] != 2:
+            for l in lines:
+                if l[0:3] == line[0:3] and l[3] < line[3]:
+                    lines.remove(l)
+            lines.append(line)
+
+def init():
+    global values
+    global grid
+    for i in range(10):
+        row = input()
+        grid.append(row)
+        for j in range(10):
+            if row[j] == '-':
+                values.append((i,j))
+
+def findPossibilities():
+    global words
+    words = input().split(";")
+    for line in lines:
+        for word in words:
+            if len(word) == line[3]:
+                line[4].append(word)
+
+def findIntersectionPoints():
+    global lines
+    for pos in values:
+        y = pos[0]
+        x = pos[1]
+        down  = checkPoint(y+1, x+0)
+        up    = checkPoint(y-1, x+0)
+        right = checkPoint(y+0, x+1)
+        left  = checkPoint(y+0, x-1)
+        if (left or right) and (up or down):
+            if right:
+                l1 = findLine(y, x+1)
+            if left:
+                l1 = findLine(y, x-1)
+            if up:
+                l2 = findLine(y-1, x)
+            if down:
+                l2 = findLine(y+1, x)
+            l1id = l2id = 0
+            for i in range(len(lines)):
+                line = lines[i]
+                if l1[0:3] == line[0:3]:
+                    l1id = i
+                    break
+            for i in range(len(lines)):
+                line = lines[i]
+                if l2[0:3] == line[0:3]:
+                    l2id = i
+                    break
+            lines[l1id][5].append(len(intersections))
+            lines[l2id][5].append(len(intersections))
+            intersections.append([pos[0], pos[1], l1id, l2id, '', 0, 0])
+
+def collapse(index, points, used = [], solve = []):
+    
+    global intersections
+    global indent
+    global lines
+    
+    # indent += 1
+    line = lines[index]
+    x1 = line[1]
+    y1 = line[0]
+    
+    # print('\t'*indent, "---start---")
+    # print('\t'*indent + "line:", line, "used:", used)
+    # print('\t'*indent + "intersection points before:", [points[i] for i in line[5]])
+
+    added = -1
+    count = 0
+    horizontal = (line[2] == 1)
+    
+    for point in line[5]:
+        if points[point][4] == '':
+            solveid = points[point][3] if index == points[point][2] else points[point][2]
+            # print('\t'*indent + "adding to solve", solveid)
+            solve.append(solveid)
+            added = point
+            count += 1
+    
+    i = line[5][0] # All lines have atleast 1 intersection point
+    if added != -1:
+        i = point
+        solve.pop()
+    
+    # print('\t'*indent + "selected point:", points[i])
+    
+    for word in line[4]:
+        if word in used:
+            if len(used) == len(words):
+                intersections = points
+            continue
+        used.append(word)
+        # print('\t'*indent+"current word: " + word)
+        
+        skip = False
+        
+        for i in line[5]:
+            c = word[int(((points[i][1]-x1)**2+(points[i][0]-y1)**2)**0.5)]
+            if points[i][4] != c and points[i][4] != '':
+                skip = True
+                break
+        if skip:
+            used.pop()
+            continue
+        
+        c = word[int(((points[i][1]-x1)**2+(points[i][0]-y1)**2)**0.5)]
+        
+        if points[i][4] == c or points[i][4] == '':
+            if horizontal:
+                points[i][5] = word
+            else:
+                points[i][6] = word
+        
+        if points[i][4] == '':
+            points[i][4] = c
+            
+            pid = points[i][3] if index == points[i][2] else points[i][2]
+            collapse(pid, copy.deepcopy(points), copy.deepcopy(used), solve)
+            points[i][4] = ''
+        elif points[i][4] == c:
+            if count == 0 and len(solve) > 0:
+                pid = solve.pop()
+                # print('\t'*indent + "Solving branch", pid)
+                collapse(pid, copy.deepcopy(points), used, solve)
+                # print('\t'*indent + "Finished solving branch", pid)
+                
+            if len(used) == len(words):
+                intersections = points
+                return
+
+        used.pop()
+    
+    # print('\t'*indent + "after modification point:", points)
+    # indent -= 1
+
+def replace():
+    global grid
+    global inersections
+    
+    for point in intersections:
+        
+        wx = point[5]
+        wy = point[6]
+        
+        x1 = lines[point[2]][1]
+        y1 = lines[point[2]][0]
+        
+        x2 = lines[point[3]][1]
+        y2 = lines[point[3]][0]
+        
+        if lines[point[2]][2] == 0:
+            y1, y2 = y2, y1
+            x1, x2 = x2, x1
+        
+        if wx != 0:
+            grid[y1] = grid[y1][:x1] + wx + grid[y1][x1+len(wx):]
+        if wy != 0:
+            for i in range(len(wy)):
+                grid[y2+i] = grid[y2+i][0:x2] + wy[i] + grid[y2+i][x2+1:]
+
+def show():
+    global grid
+    for row in grid:
+        print(row)
+
+init()
+findLines()
+findIntersectionPoints()
+findPossibilities()
+collapse(0, copy.deepcopy(intersections))
+replace()
+show()
